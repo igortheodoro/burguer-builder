@@ -1,8 +1,8 @@
 {
-  "name": "burguer-builder",
+  "name": "burger-builder",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://igortheodoro.github.io/burguer-builder/",
+  "homepage": "https://igortheodoro.github.io/burger-builder/",
   "dependencies": {
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
