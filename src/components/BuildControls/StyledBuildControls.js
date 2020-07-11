@@ -3,8 +3,9 @@ import Styled from "styled-components";
 const StyledControlsDiv = Styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   background-color: rgba(245, 245, 245, 0.5);
+  margin-left: 2rem;
 `;
 
 const StyledDiv = Styled.div`
@@ -36,7 +37,7 @@ const StyledButton = Styled.button`
 const StyledH1 = Styled.h1`
   font-size: 25px;
   text-align: right;
-  width: 150px;
+  width: 100px;
   color: #264653;
   margin-right: 10px;
 `;
