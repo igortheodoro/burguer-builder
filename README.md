@@ -6,4 +6,4 @@
 ## ✔️ Deploy
 ![Deploy da aplicação](./src/assets/example.gif)
 
-* 🗝️Link para acessar: https://igortheodoro.github.io/burger-builder/.
+* 🗝️Link para acessar: https://igortheodoro.github.io/burger-builder/
