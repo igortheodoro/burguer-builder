@@ -1,4 +1,4 @@
-# 💣 Campo Minado
+# 🍔 Burger-Builder
 > Uma aplicação em React.js para construir um hamburguer.
 
 * [🧍 Igor Theodoro](https://github.com/igortheodoro)
