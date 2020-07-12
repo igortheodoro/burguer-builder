@@ -1,5 +1,5 @@
 import React from 'react'
-import StyledIngredients from './BurguerStyled'
+import StyledIngredients from './BurgerStyled'
 import PropTypes from 'prop-types'
 
 const burguerIngredients = (props) => {

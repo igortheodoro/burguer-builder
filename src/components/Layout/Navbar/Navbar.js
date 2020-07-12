@@ -21,7 +21,7 @@ const StyledItem = Styled.a`
 
 const nav = () => (
   <StyledNav>
-  <StyledItem>My Burguer</StyledItem>
+  <StyledItem>My Burger</StyledItem>
 
   <StyledDiv>
     <StyledItem>Builder</StyledItem>

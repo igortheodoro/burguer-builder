@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Aux from "../../hoc/Auxiliary";
-import Burguer from "../../components/Burguer/Burguer";
+import Burguer from "../../components/Burger/Burger";
 import BuildControls from "../../components/BuildControls/BuildControls";
 
 class BurguerBuilder extends Component {

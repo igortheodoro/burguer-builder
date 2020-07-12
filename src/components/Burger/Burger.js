@@ -1,5 +1,5 @@
 import React from 'react'
-import BurguerIngredients from './BurguerIngredient/BurguerIngredient'
+import BurguerIngredients from './BurgerIngredient/BurgerIngredient'
 import Styled from 'styled-components'
 
 const BurguerDiv = Styled.div`
