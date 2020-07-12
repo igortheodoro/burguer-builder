@@ -10,6 +10,12 @@ import {
 const controls = (props) => (
   <StyledControlsDiv>
     <StyledDiv>
+      <StyledH1>Price:</StyledH1>
+      <StyledParagraph>{props.price}</StyledParagraph>
+    </StyledDiv>
+
+
+    <StyledDiv>
       <StyledH1>Meat: </StyledH1>
 
       <StyledButton onClick={props.addMeat}>+</StyledButton>

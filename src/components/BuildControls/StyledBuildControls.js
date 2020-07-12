@@ -37,7 +37,7 @@ const StyledButton = Styled.button`
 const StyledH1 = Styled.h1`
   font-size: 25px;
   text-align: right;
-  width: 100px;
+  width: 150px;
   color: #264653;
   margin-right: 10px;
 `;
