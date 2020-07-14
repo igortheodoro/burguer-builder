@@ -1,5 +1,5 @@
 # 🍔 Burger-Builder
-> Uma aplicação em React.js para construir um hamburguer.
+> Uma aplicação em React.js para construir um hambúrguer.
 
 * [🧍 Igor Theodoro](https://github.com/igortheodoro)
 

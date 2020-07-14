@@ -1,8 +1,8 @@
 import React from 'react'
-import BurguerIngredients from './BurgerIngredient/BurgerIngredient'
+import BurgerIngredients from './BurgerIngredient/BurgerIngredient'
 import Styled from 'styled-components'
 
-const BurguerDiv = Styled.div`
+const BurgerDiv = Styled.div`
   width: 100%;
   margin: 0 auto;
   height: 250px;
@@ -45,25 +45,53 @@ const BurguerDiv = Styled.div`
   }
 `
 
-const burguer = (props) => {
+const burger = (props) => {
 
-  const transformedIngredients = Object.keys(props.ingredients)
+  // O método abaixo pega cada key do objeto
+  // key são as propriedades, exemplo meat: 2. Meat é a key
+  // Depois usa o método Array que basicamente cria um array
+  // com um tamanho que é definido dentro do atributo
+  // Como foi passado o objeto ingredients na posição da sua key
+  // logo, será criado um array com o número que está dentro dessa key
+  // Array[ingredients[meat]] == 1
+  // A partir disso o segundo map irá fazer um for loop de acordo com 
+  // o array criado acima, criando os componentes 
+
+  let transformedIngredients = Object.keys(props.ingredients)
     .map(ingKey => {
       return [...Array(props.ingredients[ingKey])].map((_, index) => {
-        return <BurguerIngredients key={ingKey + index} 
+        return <BurgerIngredients key={ingKey + index} 
                 type={ingKey} />
       })
     });
 
-  return (
-    <BurguerDiv>
-      <BurguerIngredients type='bread-top'/>
+    const hasIngredients = () => {
+      let counter = 0
 
+      for(var i = 0; i < transformedIngredients.length; i++){
+        // If have no ingredients 
+        if(transformedIngredients[i].length === 0){
+          counter++
+        }
+      }
+
+      let isBurgerEmpty = counter === transformedIngredients.length
+      
+      if(isBurgerEmpty){
+        transformedIngredients = <p>Add some ingredients</p>
+      }
+    }
+
+  return (
+    <BurgerDiv>
+      <BurgerIngredients type='bread-top'/>
+
+        {hasIngredients()}
         {transformedIngredients}
 
-      <BurguerIngredients type='bread-bottom'/>
-    </BurguerDiv>
+      <BurgerIngredients type='bread-bottom'/>
+    </BurgerDiv>
   )
 }
 
-export default burguer
+export default burger

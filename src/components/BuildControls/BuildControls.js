@@ -1,52 +1,29 @@
 import React from "react";
-import {
-  StyledControlsDiv,
-  StyledDiv,
-  StyledH1,
-  StyledButton,
-  StyledParagraph,
-} from "./StyledBuildControls";
+import BuildControl from "./BuildControl/BuildControl";
+import {StyledDiv, StyledPrice} from "./StyledBuildControls";
 
-const controls = (props) => (
-  <StyledControlsDiv>
-    <StyledDiv>
-      <StyledH1>Price:</StyledH1>
-      <StyledParagraph>{props.price}</StyledParagraph>
-    </StyledDiv>
+const controls = [
+  { label: "Meat", type: "meat" },
+  { label: "Cheese", type: "cheese" },
+  { label: "Salad", type: "salad" },
+  { label: "Bacon", type: "bacon" },
+];
 
+const buildControls = (props) => (
+  <StyledDiv>
+    <StyledPrice>Price: {props.price.toFixed(2)}</StyledPrice>
 
-    <StyledDiv>
-      <StyledH1>Meat: </StyledH1>
+    {controls.map((ctrl) => (
+      <BuildControl
+        key={ctrl.label}
+        label={ctrl.label}
+        addIngredients={() => props.addIngredients(ctrl.type)}
+        removeIngredients={() => props.removeIngredients(ctrl.type)}
+        disabled={props.disabled(ctrl.type)}
+      />
+    ))}
 
-      <StyledButton onClick={props.addMeat}>+</StyledButton>
-        <StyledParagraph>{props.meat}</StyledParagraph>
-      <StyledButton onClick={props.removeMeat}>-</StyledButton>
-    </StyledDiv>
-
-    <StyledDiv>
-      <StyledH1>Bacon: </StyledH1>
-
-      <StyledButton onClick={props.addBacon}>+</StyledButton>
-        <StyledParagraph>{props.bacon}</StyledParagraph>
-      <StyledButton onClick={props.removeBacon}>-</StyledButton>
-    </StyledDiv>
-
-    <StyledDiv>
-      <StyledH1>Cheese:</StyledH1>
-
-      <StyledButton onClick={props.addCheese}>+</StyledButton>
-        <StyledParagraph>{props.cheese}</StyledParagraph>
-      <StyledButton onClick={props.removeCheese}>-</StyledButton>
-    </StyledDiv>
-
-    <StyledDiv>
-      <StyledH1>Salad: </StyledH1>
-
-      <StyledButton onClick={props.addSalad}>+</StyledButton>
-        <StyledParagraph>{props.salad}</StyledParagraph>
-      <StyledButton onClick={props.removeSalad}>-</StyledButton>
-    </StyledDiv>
-  </StyledControlsDiv>
+  </StyledDiv>
 );
 
-export default controls;
+export default buildControls;

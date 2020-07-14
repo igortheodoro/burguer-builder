@@ -2,7 +2,7 @@ import React from 'react'
 import StyledIngredients from './BurgerStyled'
 import PropTypes from 'prop-types'
 
-const burguerIngredients = (props) => {
+const burgerIngredients = (props) => {
   let ingredient = null
 
   switch(props.type){
@@ -42,8 +42,8 @@ const burguerIngredients = (props) => {
   return ingredient;
 }
 
-burguerIngredients.propTypes = {
+burgerIngredients.propTypes = {
   type: PropTypes.string.isRequired
 }
 
-export default burguerIngredients
+export default burgerIngredients
