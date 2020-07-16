@@ -2,7 +2,7 @@ import Styled from "styled-components";
 
 const StyledH1 = Styled.h1`
   font-size: 20px;
-  text-align: center;
+  text-align: left;
   width: 85px;
   color: #264653;
 `;
@@ -26,6 +26,7 @@ const StyledButton = Styled.button`
 
   :disabled{
     background-color: #9e9e9e;
+    cursor: not-allowed;
   }
 `;
 
@@ -35,5 +36,6 @@ const StyledDiv = Styled.div`
   align-items: center;
   margin: 5px 0;
 `;
+
 
 export { StyledH1, StyledButton, StyledDiv };

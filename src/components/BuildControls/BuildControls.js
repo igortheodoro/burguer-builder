@@ -1,6 +1,6 @@
 import React from "react";
 import BuildControl from "./BuildControl/BuildControl";
-import {StyledDiv, StyledPrice} from "./StyledBuildControls";
+import {StyledDiv, StyledPrice, StyledCheckButton} from "./StyledBuildControls";
 
 const controls = [
   { label: "Meat", type: "meat" },
@@ -23,6 +23,8 @@ const buildControls = (props) => (
       />
     ))}
 
+      <StyledCheckButton onClick={props.orderClick}
+      disabled={!props.isPurchasable}> Order</StyledCheckButton>
   </StyledDiv>
 );
 
