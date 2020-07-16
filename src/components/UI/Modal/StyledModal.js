@@ -11,7 +11,7 @@ const StyledModalDiv = Styled.div`
     padding: 25px;
     border-radius: 8px;
     left: 15%;
-    top: 30%;
+    top: 10%;
     box-sizing: border-box;
     transition: all 0.3s ease-out;
 
