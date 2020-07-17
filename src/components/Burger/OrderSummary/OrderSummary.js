@@ -2,6 +2,7 @@ import React from "react";
 import Aux from "../../../hoc/Auxiliary";
 
 import StyledUl from "./StyledOrderSummary";
+import Button from '../../UI/Button/StyledButton'
 
 const orderSummary = (props) => {
   const ingredientSummary = Object.keys(props.ingredients)
@@ -19,6 +20,9 @@ const orderSummary = (props) => {
       <StyledUl>
         {ingredientSummary}
       </StyledUl>
+      <p>Continue to Checkout?</p>
+      <Button btnSuccess={false} onClick={props.cancelOrder}>Cancel</Button>
+      <Button btnSuccess={true} onClick={props.continueOrder}>Continue</Button>
     </Aux>
   );
 };
