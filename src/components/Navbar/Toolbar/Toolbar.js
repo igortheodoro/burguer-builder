@@ -1,25 +1,21 @@
 import React from 'react'
-import {StyledNav, StyledDiv, StyledItem, StyledLogo} from './StyledToolbar'
+import {StyledNav, StyledDiv} from './StyledToolbar'
+
+import Logo from '../Logo/Logo'
+import NavItem from '../NavItems/NavItems'
 
 
 const nav = () => (
   <StyledNav>
-    <StyledDiv>
-      <StyledLogo 
-      src={require("../../../assets/burger-logo.png")} 
-      alt="My Burger Logo"/>
+    <Logo>
+      My Burger
+    </Logo>
 
-      <p>My Burger</p>
-    </StyledDiv>
-
-    <StyledDiv>
-      <StyledItem isActive={true} href='/'>Builder</StyledItem>
-
-      <StyledItem href='/'>Orders</StyledItem>
-
-      <StyledItem href='/'>Login</StyledItem>
-    </StyledDiv>
-
+  <StyledDiv>
+    <NavItem isActive={true} href={'/'}>Builder</NavItem>
+    <NavItem isActive={false} href={'/'}>Order</NavItem>
+    <NavItem isActive={false} href={'/'}>Login</NavItem>
+  </StyledDiv>
 </StyledNav>
 )
 

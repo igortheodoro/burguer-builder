@@ -15,26 +15,5 @@ const StyledDiv = Styled.div`
   align-items: center;
 `;
 
-const StyledItem = Styled.a`
-  margin-left: 15px;
-  padding: 5px;
-  display: flex;
-  text-decoration: none;
-  border-bottom: ${props => props.isActive ? '2px solid #264653' : 'none'};
 
-  :hover{
-    border-bottom: 2px solid #264653;
-  }
-
-  :visited {
-    color: inherit;
-  }
-`;
-
-const StyledLogo = Styled.img`
-  width: 55px;
-  height: 100%;
-  margin-right: 15px;
-`
-
-export {StyledNav, StyledDiv, StyledItem, StyledLogo}
+export {StyledNav, StyledDiv};
