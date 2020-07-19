@@ -9,7 +9,7 @@ const modal = (props) => (
     <Backdrop show={props.show} hideModal={props.hideModal} />
     <StyledModalDiv show={props.show}>
     <img
-        style={{ width: "100%" }}
+        style={{ width: "80%", marginLeft: '35px' }}
         src={require("../../../assets/undraw-hamburger.svg")}
     />
 
