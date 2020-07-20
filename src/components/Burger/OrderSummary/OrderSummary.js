@@ -1,31 +1,37 @@
-import React from "react";
+import React, {Component} from "react";
 import Aux from "../../../hoc/Auxiliary";
 
 import StyledUl from "./StyledOrderSummary";
-import Button from '../../UI/Button/StyledButton'
+import Button from "../../UI/Button/StyledButton";
 
-const orderSummary = (props) => {
-  const ingredientSummary = Object.keys(props.ingredients)
-    .map((ing, index) => (
-      <li key={ing+index}>
-        <span style={{ textTransform: "capitalize" }}>{ing}</span>:{" "}
-        {props.ingredients[ing]}
-      </li>
-    ))
+class OrderSummary extends Component {
 
-  return (
-    <Aux>
-      <h3>Your Order</h3>
-      <p>Your burger ingredients: </p>
-      <StyledUl>
-        {ingredientSummary}
-      </StyledUl>
-      <p><strong>Price: ${props.price.toFixed(2)}</strong></p>
-      <p>Continue to Checkout?</p>
-      <Button btnSuccess={false} onClick={props.cancelOrder}>Cancel</Button>
-      <Button btnSuccess={true} onClick={props.continueOrder}>Continue</Button>
-    </Aux>
-  );
+  ingredientSummary = Object.keys(this.props.ingredients).map((ing, index) => (
+    <li key={ing + index}>
+      <span style={{ textTransform: "capitalize" }}>{ing}</span>:{" "}
+      {this.props.ingredients[ing]}
+    </li>
+  ));
+
+  render(){
+    return (
+      <Aux>
+        <h3>Your Order</h3>
+        <p>Your burger ingredients: </p>
+        <StyledUl>{this.ingredientSummary}</StyledUl>
+        <p>
+          <strong>Price: ${this.props.price.toFixed(2)}</strong>
+        </p>
+        <p>Continue to Checkout?</p>
+        <Button btnSuccess={false} onClick={this.props.cancelOrder}>
+          Cancel
+        </Button>
+        <Button btnSuccess={true} onClick={this.props.continueOrder}>
+          Continue
+        </Button>
+      </Aux>
+    );
+  }
 };
 
-export default orderSummary;
+export default OrderSummary;
