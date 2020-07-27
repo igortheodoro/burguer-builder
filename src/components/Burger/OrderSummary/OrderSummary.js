@@ -1,24 +1,27 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Aux from "../../../hoc/Auxiliary";
 
 import StyledUl from "./StyledOrderSummary";
 import Button from "../../UI/Button/StyledButton";
 
 class OrderSummary extends Component {
+  render() {
+    let ingredientSummary = Object.keys(this.props.ingredients).map(
+      (ing, index) => {
+        return (
+          <li key={ing + index}>
+            <span style={{ textTransform: "capitalize" }}>{ing}</span>:{" "}
+            {this.props.ingredients[ing]}
+          </li>
+        );
+      }
+    );
 
-  ingredientSummary = Object.keys(this.props.ingredients).map((ing, index) => (
-    <li key={ing + index}>
-      <span style={{ textTransform: "capitalize" }}>{ing}</span>:{" "}
-      {this.props.ingredients[ing]}
-    </li>
-  ));
-
-  render(){
     return (
       <Aux>
         <h3>Your Order</h3>
         <p>Your burger ingredients: </p>
-        <StyledUl>{this.ingredientSummary}</StyledUl>
+        <StyledUl>{ingredientSummary}</StyledUl>
         <p>
           <strong>Price: ${this.props.price.toFixed(2)}</strong>
         </p>
@@ -32,6 +35,6 @@ class OrderSummary extends Component {
       </Aux>
     );
   }
-};
+}
 
 export default OrderSummary;

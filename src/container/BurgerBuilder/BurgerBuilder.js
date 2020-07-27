@@ -4,8 +4,11 @@ import Aux from "../../hoc/Auxiliary";
 
 import Burger from "../../components/Burger/Burger";
 import BuildControls from "../../components/BuildControls/BuildControls";
-import Modal from '../../components/UI/Modal/Modal'
-import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
+import Modal from "../../components/UI/Modal/Modal";
+import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
+import Loading from "../../components/UI/Spinner/Spinner";
+
+import axios from "../../axios-orders";
 
 const INGREDIENT_PRICES = {
   salad: 0.5,
@@ -27,7 +30,8 @@ class BurgerBuilder extends Component {
       },
       totalPrice: 4,
       purchaseable: false,
-      purchasing: false
+      purchasing: false,
+      loading: false,
     };
   }
 
@@ -77,43 +81,86 @@ class BurgerBuilder extends Component {
     const ingredients = this.state.ingredients;
     const keys = Object.keys(ingredients);
 
-    const haveIngredients = keys.map((ingredient) => {
-      return ingredients[ingredient]
-    }).reduce((accumulator, value) => {
-      return value + accumulator
-    }, 0)
+    const haveIngredients = keys
+      .map((ingredient) => {
+        return ingredients[ingredient];
+      })
+      .reduce((accumulator, value) => {
+        return value + accumulator;
+      }, 0);
 
     this.setState({
-      purchaseable: haveIngredients > 0
+      purchaseable: haveIngredients > 0,
     });
   };
 
   purchaseHandler = () => {
-    this.setState({purchasing: true})
-  }
+    this.setState({ purchasing: true });
+  };
 
   purchaseCancelHandler = () => {
-    this.setState({purchasing: false})
-  }
+    this.setState({ purchasing: false });
+  };
 
-  purchaseContinueAlert = () => {
-    alert('Continue!')
-  }
+  purchaseContinue = () => {
+    this.setState({
+      loading: true,
+    });
+
+    const order = {
+      ingredients: this.state.ingredients,
+      price: this.state.totalPrice,
+      customer: {
+        name: "Igor Theodoro",
+        address: {
+          street: "Rua Pedro Rosa",
+          number: "1568",
+        },
+        email: "igortheodoro18@gmail.com",
+      },
+      deliveryMethod: "fastest",
+    };
+
+    axios
+      .post("/orders.json", order)
+      .then((res) => {
+        this.setState({
+          loading: false,
+          purchasing: false,
+        });
+      })
+      .catch((err) => {
+        this.setState({
+          loading: false,
+          purchasing: false,
+        });
+      });
+  };
 
   render() {
+    let orderSummary = (
+      <OrderSummary
+        price={this.state.totalPrice}
+        cancelOrder={this.purchaseCancelHandler}
+        continueOrder={this.purchaseContinue}
+        ingredients={this.state.ingredients}
+      />
+    );
+
+    if (this.state.loading) {
+      orderSummary = <Loading />;
+    }
+
     return (
       <Aux>
+        <Modal
+          hideModal={this.purchaseCancelHandler}
+          show={this.state.purchasing}
+        >
+          {orderSummary}
+        </Modal>
 
-      <Modal hideModal={this.purchaseCancelHandler} show={this.state.purchasing}>
-        <OrderSummary 
-        price={this.state.totalPrice}
-        cancelOrder={this.purchaseCancelHandler} 
-        continueOrder={this.purchaseContinueAlert}
-        ingredients={this.state.ingredients} 
-        />
-      </Modal>
-
-        <Burger ingredients={this.state.ingredients}/>
+        <Burger ingredients={this.state.ingredients} />
 
         <BuildControls
           addIngredients={this.addIngredients}
@@ -123,7 +170,6 @@ class BurgerBuilder extends Component {
           isPurchasable={this.state.purchaseable}
           orderClick={this.purchaseHandler}
         />
-        
       </Aux>
     );
   }
